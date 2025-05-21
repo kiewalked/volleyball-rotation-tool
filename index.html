@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Volleyball Rotation Tool</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="hero">
+      <div class="court">
+        <div class="court-side top">
+          <div class="court-square item-1 setter">
+            <span>1</span>
+            <!-- <input type="number" placeholder="Number" />
+            <select>
+              <option value="setter">Setter</option>
+              <option value="outside">Outside</option>
+              <option value="opposite">Opposite</option>
+              <option value="middle">Middle</option>
+            </select> -->
+          </div>
+          <div class="court-square item-2 middle">
+            <span>2</span>
+          </div>
+          <div class="court-square item-3 outside">
+            <span>3</span>
+          </div>
+          <div class="court-square item-4 outside">
+            <span>4</span>
+          </div>
+          <div class="court-square item-5 middle">
+            <span>5</span>
+          </div>
+          <div class="court-square item-6 opposite">
+            <span>6</span>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="court-side bottom">
+          <div class="court-square item-7 opposite">
+            <span>7</span>
+          </div>
+          <div class="court-square item-8 middle">
+            <span>8</span>
+          </div>
+          <div class="court-square item-9 outside">
+            <span>9</span>
+          </div>
+          <div class="court-square item-10 outside">
+            <span>10</span>
+          </div>
+          <div class="court-square item-11 middle">
+            <span>11</span>
+          </div>
+          <div class="court-square item-12 setter">
+            <span>12</span>
+          </div>
+        </div>
+        <div class="edit-mode">
+          <input
+            type="checkbox"
+            name="edit-button"
+            id="edit-button"
+            onclick="toggleEditMode(event)"
+          />
+          <label for="edit-button">Edit Mode</label>
+        </div>
+      </div>
+
+      <!-- <button onclick="applyOrdering()">Apply Ordering</button> -->
+      <div class="buttons">
+        <button class="rotate-button" onclick="rotate()">Rotate</button>
+        <!-- <button class="edit-button" onclick="toggleEditMode()">
+          Edit Mode
+        </button> -->
+      </div>
+      <div class="colour-key">
+        <div class="key-item">
+          <div class="setter"></div>
+          <p>Setter</p>
+        </div>
+        <div class="key-item">
+          <div class="outside"></div>
+          <p>Outside</p>
+        </div>
+        <div class="key-item">
+          <div class="opposite"></div>
+          <p>Opposite</p>
+        </div>
+        <div class="key-item">
+          <div class="middle"></div>
+          <p>Middle</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

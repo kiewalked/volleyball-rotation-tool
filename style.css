@@ -1,0 +1,142 @@
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+  font-family: 'Outfit', sans-serif;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* flex-direction: column; */
+  gap: 1rem;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+textarea,
+button,
+select {
+  font: inherit;
+}
+
+html {
+  color-scheme: dark;
+}
+
+.divider {
+  min-height: 2px;
+  min-width: 500px;
+  background-color: white;
+}
+
+.court {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.court-side {
+  height: 200px;
+  width: 400px;
+  display: grid;
+  overflow: hidden;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.court-square {
+  border-style: solid;
+  border-width: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+span {
+  margin: auto;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+button {
+  padding: 0.5rem;
+}
+
+.opposite {
+  background-color: rgb(212, 109, 122);
+}
+
+.outside {
+  background-color: rgb(238, 167, 140);
+}
+
+.middle {
+  background-color: rgb(180, 205, 194);
+}
+
+.setter {
+  background-color: rgb(0, 180, 155);
+}
+
+.key-item {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.key-item > div {
+  min-height: 50px;
+  min-width: 50px;
+}
+
+.court-square > span {
+  font-size: 1.5rem;
+}
+
+.edit-mode {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+input,
+select {
+  height: 35px;
+  width: 90px;
+  text-align: center;
+}
+
+label {
+  margin-left: 0.5rem;
+  font-size: 1.25rem;
+}
