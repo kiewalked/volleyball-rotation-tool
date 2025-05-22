@@ -77,6 +77,7 @@ html {
 }
 
 .court-square {
+  position: relative;
   border-style: solid;
   border-width: 1px;
   display: flex;
@@ -179,4 +180,10 @@ iframe {
   border-style: solid;
   border-width: 1px;
   background-color: grey;
+}
+
+.label {
+  position: absolute;
+  inset: auto auto 0 2px;
+  font-size: 0.9rem;
 }

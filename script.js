@@ -5,6 +5,21 @@ let initialised = false;
 let topServing = true;
 let nextServer = 9;
 
+const zoneMap = {
+  1: 1,
+  2: 6,
+  3: 5,
+  4: 2,
+  5: 3,
+  6: 4,
+  7: 4,
+  8: 3,
+  9: 2,
+  10: 5,
+  11: 6,
+  12: 1,
+};
+
 const rotations = {
   1: 2,
   2: 3,
@@ -96,10 +111,12 @@ function rotate() {
     // console.log(item);
     const order = item.style.order;
     item.style.order = rotations[order];
+    item.querySelector('.label').innerHTML = zoneMap[item.style.order];
   }
 
   //* Now loop through the receiving side and find the next server
   findNextServer(receivingSide);
+  renderView();
 
   topServing = !topServing;
   // update next server
@@ -225,6 +242,10 @@ function createElement(type, props) {
 
 function renderView() {
   //? Removes existing attributes, reassigns them to based on squareData and creates a span with the respective number inside
+  if (!initialised) {
+    applyOrdering();
+    initialised = true;
+  }
 
   const childDivs = document.getElementsByClassName('court-square');
   for (let i = 0; i < childDivs.length; i++) {
@@ -242,10 +263,10 @@ function renderView() {
     span.innerHTML = squareData[i]['number'];
     item.innerHTML = '';
     item.appendChild(span);
-  }
-  if (!initialised) {
-    applyOrdering();
-    initialised = true;
+
+    const labelSpan = createElement('div', { class: 'label' });
+    labelSpan.innerHTML = zoneMap[item.style.order];
+    item.appendChild(labelSpan);
   }
 }
 
@@ -253,7 +274,6 @@ function loadPDF(e) {
   const preview = document.querySelector('iframe');
   const file = e.target.files[0];
   const reader = new FileReader();
-  let filename = file.name;
 
   reader.addEventListener(
     'load',
@@ -272,12 +292,6 @@ function findNextServer(side) {
   console.log(side);
   for (let i = 0; i < side.length; i++) {
     const item = side[i];
-    // if (
-    //   !item.style.order &&
-    //   (item.classList.contains('item-4') || item.classList.contains('item-9'))
-    // ) {
-    //   nextServer = item.querySelector('span').innerHTML;
-    // } else
     if (item.style.order === '4' || item.style.order === '9') {
       nextServer = item.querySelector('span').innerHTML;
     }
