@@ -15,90 +15,106 @@
   </head>
   <body>
     <div class="hero">
-      <div class="court">
-        <div class="court-side top">
-          <div class="court-square item-1 setter">
-            <span>1</span>
-            <!-- <input type="number" placeholder="Number" />
-            <select>
-              <option value="setter">Setter</option>
-              <option value="outside">Outside</option>
-              <option value="opposite">Opposite</option>
-              <option value="middle">Middle</option>
-            </select> -->
+      <div class="left">
+        <div class="court">
+          <div class="court-side top">
+            <div class="court-square item-1 setter">
+              <span>1</span>
+              <!-- <input type="number" placeholder="Number" />
+              <select>
+                <option value="setter">Setter</option>
+                <option value="outside">Outside</option>
+                <option value="opposite">Opposite</option>
+                <option value="middle">Middle</option>
+              </select> -->
+            </div>
+            <div class="court-square item-2 middle">
+              <span>2</span>
+            </div>
+            <div class="court-square item-3 outside">
+              <span>3</span>
+            </div>
+            <div class="court-square item-4 outside">
+              <span>4</span>
+            </div>
+            <div class="court-square item-5 middle">
+              <span>5</span>
+            </div>
+            <div class="court-square item-6 opposite">
+              <span>6</span>
+            </div>
           </div>
-          <div class="court-square item-2 middle">
-            <span>2</span>
-          </div>
-          <div class="court-square item-3 outside">
-            <span>3</span>
-          </div>
-          <div class="court-square item-4 outside">
-            <span>4</span>
-          </div>
-          <div class="court-square item-5 middle">
-            <span>5</span>
-          </div>
-          <div class="court-square item-6 opposite">
-            <span>6</span>
+          <div class="divider"></div>
+          <div class="court-side bottom">
+            <div class="court-square item-7 opposite">
+              <span>7</span>
+            </div>
+            <div class="court-square item-8 middle">
+              <span>8</span>
+            </div>
+            <div class="court-square item-9 outside">
+              <span>9</span>
+            </div>
+            <div class="court-square item-10 outside">
+              <span>10</span>
+            </div>
+            <div class="court-square item-11 middle">
+              <span>11</span>
+            </div>
+            <div class="court-square item-12 setter">
+              <span>12</span>
+            </div>
           </div>
         </div>
-        <div class="divider"></div>
-        <div class="court-side bottom">
-          <div class="court-square item-7 opposite">
-            <span>7</span>
-          </div>
-          <div class="court-square item-8 middle">
-            <span>8</span>
-          </div>
-          <div class="court-square item-9 outside">
-            <span>9</span>
-          </div>
-          <div class="court-square item-10 outside">
-            <span>10</span>
-          </div>
-          <div class="court-square item-11 middle">
-            <span>11</span>
-          </div>
-          <div class="court-square item-12 setter">
-            <span>12</span>
+        <div class="buttons">
+          <button class="rotate-button" onclick="rotate()">Rotate</button>
+          <div class="edit-mode">
+            <input
+              type="checkbox"
+              name="edit-button"
+              id="edit-button"
+              onclick="toggleEditMode(event)"
+            />
+            <label for="edit-button">Edit Mode</label>
           </div>
         </div>
-        <div class="edit-mode">
-          <input
-            type="checkbox"
-            name="edit-button"
-            id="edit-button"
-            onclick="toggleEditMode(event)"
-          />
-          <label for="edit-button">Edit Mode</label>
+        <div class="legend">
+          <div class="colour-key">
+            <div class="key-item">
+              <div class="setter"></div>
+              <p>Setter</p>
+            </div>
+            <div class="key-item">
+              <div class="outside"></div>
+              <p>Outside</p>
+            </div>
+            <div class="key-item">
+              <div class="opposite"></div>
+              <p>Opposite</p>
+            </div>
+            <div class="key-item">
+              <div class="middle"></div>
+              <p>Middle</p>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- <button onclick="applyOrdering()">Apply Ordering</button> -->
-      <div class="buttons">
-        <button class="rotate-button" onclick="rotate()">Rotate</button>
-        <!-- <button class="edit-button" onclick="toggleEditMode()">
-          Edit Mode
-        </button> -->
-      </div>
-      <div class="colour-key">
-        <div class="key-item">
-          <div class="setter"></div>
-          <p>Setter</p>
-        </div>
-        <div class="key-item">
-          <div class="outside"></div>
-          <p>Outside</p>
-        </div>
-        <div class="key-item">
-          <div class="opposite"></div>
-          <p>Opposite</p>
-        </div>
-        <div class="key-item">
-          <div class="middle"></div>
-          <p>Middle</p>
-        </div>
+      <div class="right">
+        <div class="pdf"></div>
+        <iframe
+          src=""
+          id="iframe-pdf"
+          width="600px"
+          height="700px"
+          allowtransparency="true"
+        ></iframe>
+        <input
+          type="file"
+          name="import"
+          id="import"
+          placeholder="Upload"
+          oninput="loadPDF(event)"
+        />
       </div>
     </div>
   </body>

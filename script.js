@@ -1,6 +1,9 @@
 // Map of where each position will move to on the court.
 let initialised = false;
 
+// TODO: Need to implement one side rotating at a time. Right now, both sides rotate. This also means I need to be able to allocate a serving side in edit mode.
+let topServing = true;
+
 const rotations = {
   1: 2,
   2: 3,
@@ -73,13 +76,13 @@ function rotate() {
     initialised = true;
   }
   const childDivs = document.getElementsByClassName('court-square');
+  // console.log(childDivs);
   for (let i = 0; i < childDivs.length; i++) {
     const item = childDivs[i];
     const order = item.style.order;
     // ? We need to loop through this list of childDivs and shuffle the order
     item.style.order = rotations[order];
   }
-  for (let i = 1; i < 13; i++) {}
 }
 
 function applyOrdering() {
@@ -153,10 +156,6 @@ function toggleEditMode(e) {
       item.innerHTML = '';
       item.appendChild(input);
       item.appendChild(select);
-
-      // TODO: Need to add in some way of validating the input from each square, and then storing it squareData. The two choices are to have an event listener which listens for every single time a value is updated, or simply read them all at once when we go back to view mode.
-
-      // * Option 2 does seem better, but it means I need to track the selections. Alternatively, if I simply loop through all the court-squares, maybe I can go through sequentially and simply replace that square's data
     }
   } else {
     // ? Need to replace the innerHTML of each court-square with their assigned value, along with assigning the class based on the role from edit mode.
@@ -209,6 +208,25 @@ function renderView() {
     span.innerHTML = squareData[i]['number'];
     item.innerHTML = '';
     item.appendChild(span);
+  }
+}
+
+function loadPDF(e) {
+  const preview = document.querySelector('iframe');
+  const file = e.target.files[0];
+  const reader = new FileReader();
+  let filename = file.name;
+
+  reader.addEventListener(
+    'load',
+    function () {
+      preview.src = reader.result;
+    },
+    false
+  );
+
+  if (file) {
+    reader.readAsDataURL(file);
   }
 }
 

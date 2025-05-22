@@ -20,10 +20,13 @@ body {
 .hero {
   min-height: 100vh;
   display: flex;
+  /* justify-content: center;
+  align-items: center; */
+  /* flex-direction: column; */
+  /* gap: 1rem; */
+  gap: 1rem;
   justify-content: center;
   align-items: center;
-  /* flex-direction: column; */
-  gap: 1rem;
 }
 
 img,
@@ -47,7 +50,7 @@ html {
 
 .divider {
   min-height: 2px;
-  min-width: 500px;
+  width: 350px;
   background-color: white;
 }
 
@@ -56,11 +59,16 @@ html {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+
+  /* position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); */
 }
 
 .court-side {
-  height: 200px;
-  width: 400px;
+  height: 150px;
+  width: 300px;
   display: grid;
   overflow: hidden;
   justify-content: center;
@@ -126,17 +134,49 @@ button {
 .edit-mode {
   display: flex;
   align-items: center;
-  margin-top: 1rem;
+  width: fit-content;
 }
 
-input,
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+input[type='number'],
 select {
-  height: 35px;
-  width: 90px;
+  height: 25px;
+  width: 80px;
   text-align: center;
 }
 
 label {
   margin-left: 0.5rem;
-  font-size: 1.25rem;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  appearance: textfield;
+}
+
+.left,
+.right {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+iframe {
+  border-style: solid;
+  border-width: 1px;
+  background-color: grey;
 }
