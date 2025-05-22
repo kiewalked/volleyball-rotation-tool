@@ -3,6 +3,7 @@ let initialised = false;
 
 // TODO: Need to implement one side rotating at a time. Right now, both sides rotate. This also means I need to be able to allocate a serving side in edit mode.
 let topServing = true;
+let nextServer = 9;
 
 const rotations = {
   1: 2,
@@ -75,14 +76,33 @@ function rotate() {
     applyOrdering();
     initialised = true;
   }
-  const childDivs = document.getElementsByClassName('court-square');
-  // console.log(childDivs);
-  for (let i = 0; i < childDivs.length; i++) {
-    const item = childDivs[i];
+
+  // TODO: Fix the rotation system to make it so only one side serves at a time.
+
+  const courts = document.querySelectorAll('.court-side');
+
+  let servingSide;
+  if (topServing) {
+    servingSide = courts[1].getElementsByClassName('court-square');
+    receivingSide = courts[0].getElementsByClassName('court-square');
+  } else {
+    servingSide = courts[0].getElementsByClassName('court-square');
+    receivingSide = courts[1].getElementsByClassName('court-square');
+  }
+
+  //* First loop through the serving side and rotate
+  for (let i = 0; i < servingSide.length; i++) {
+    const item = servingSide[i];
+    // console.log(item);
     const order = item.style.order;
-    // ? We need to loop through this list of childDivs and shuffle the order
     item.style.order = rotations[order];
   }
+
+  //* Now loop through the receiving side and find the next server
+  findNextServer(receivingSide);
+
+  topServing = !topServing;
+  // update next server
 }
 
 function applyOrdering() {
@@ -95,6 +115,10 @@ function applyOrdering() {
 
 function toggleEditMode(e) {
   if (e.target.checked) {
+    // * Hide the rotate button
+    const rotateButton = document.querySelector('.rotate-button');
+    rotateButton.style.display = 'none';
+
     // ? Need to replace the innerHTML of each court-square with an input field & a dropdown menu for their role
 
     const childDivs = document.getElementsByClassName('court-square');
@@ -158,6 +182,9 @@ function toggleEditMode(e) {
       item.appendChild(select);
     }
   } else {
+    const rotateButton = document.querySelector('.rotate-button');
+    rotateButton.style.display = 'block';
+
     // ? Need to replace the innerHTML of each court-square with their assigned value, along with assigning the class based on the role from edit mode.
 
     const childDivs = document.getElementsByClassName('court-square');
@@ -173,8 +200,15 @@ function toggleEditMode(e) {
         role,
       };
     }
-
     renderView();
+    const side = topServing
+      ? document
+          .querySelectorAll('.court-side')[1]
+          .getElementsByClassName('court-square')
+      : document
+          .querySelectorAll('.court-side')[0]
+          .getElementsByClassName('court-square');
+    findNextServer(side);
   }
 }
 
@@ -209,6 +243,10 @@ function renderView() {
     item.innerHTML = '';
     item.appendChild(span);
   }
+  if (!initialised) {
+    applyOrdering();
+    initialised = true;
+  }
 }
 
 function loadPDF(e) {
@@ -228,6 +266,24 @@ function loadPDF(e) {
   if (file) {
     reader.readAsDataURL(file);
   }
+}
+
+function findNextServer(side) {
+  console.log(side);
+  for (let i = 0; i < side.length; i++) {
+    const item = side[i];
+    // if (
+    //   !item.style.order &&
+    //   (item.classList.contains('item-4') || item.classList.contains('item-9'))
+    // ) {
+    //   nextServer = item.querySelector('span').innerHTML;
+    // } else
+    if (item.style.order === '4' || item.style.order === '9') {
+      nextServer = item.querySelector('span').innerHTML;
+    }
+  }
+  const nextServerSpan = document.querySelector('.next-server');
+  nextServerSpan.innerHTML = `Next Server: ${nextServer}`;
 }
 
 window.onload = renderView();
