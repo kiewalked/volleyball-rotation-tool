@@ -1,3 +1,24 @@
+//? Initialising pdf viewer from Syncfusion
+var pdfviewer = new ej.pdfviewer.PdfViewer({
+  // documentPath: 'https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf',
+  // resourceUrl: 'https://cdn.syncfusion.com/ej2/29.2.4/dist/ej2-pdfviewer-lib',
+});
+ej.pdfviewer.PdfViewer.Inject(
+  ej.pdfviewer.TextSelection,
+  ej.pdfviewer.TextSearch,
+  ej.pdfviewer.Print,
+  ej.pdfviewer.Navigation,
+  ej.pdfviewer.Toolbar,
+  ej.pdfviewer.Magnification,
+  ej.pdfviewer.Annotation,
+  ej.pdfviewer.FormDesigner,
+  ej.pdfviewer.FormFields,
+  ej.pdfviewer.PageOrganizer
+);
+
+//PDF Viewer control rendering starts
+pdfviewer.appendTo('#PdfViewer');
+
 // Map of where each position will move to on the court.
 let initialised = false;
 let topServing = true;
@@ -270,14 +291,12 @@ function loadPDF(e) {
   const preview = document.querySelector('iframe');
   const file = e.target.files[0];
   const reader = new FileReader();
-  const url = URL.createObjectURL(file);
 
   reader.addEventListener(
     'load',
     function () {
-      preview.src =
-        'http://docs.google.com/viewer?url=' + url + '&embedded=true';
-      // console.log(preview.src);
+      console.log(reader.result);
+      pdfviewer.load(reader.result);
     },
     false
   );

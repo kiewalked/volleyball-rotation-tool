@@ -12,6 +12,55 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Essential JS 2 material theme -->
+    <link
+      href="https://cdn.syncfusion.com/ej2/29.2.4/ej2-base/styles/material.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.syncfusion.com/ej2/29.2.4/ej2-pdfviewer/styles/material.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.syncfusion.com/ej2/29.2.4/ej2-buttons/styles/material.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.syncfusion.com/ej2/29.2.4/ej2-popups/styles/material.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.syncfusion.com/ej2/29.2.4/ej2-navigations/styles/material.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.syncfusion.com/ej2/29.2.4/ej2-dropdowns/styles/material.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.syncfusion.com/ej2/29.2.4/ej2-lists/styles/material.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.syncfusion.com/ej2/29.2.4/ej2-inputs/styles/material.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.syncfusion.com/ej2/29.2.4/ej2-splitbuttons/styles/material.css"
+      rel="stylesheet"
+    />
+
+    <!-- Essential JS 2 PDF Viewer's script -->
+    <script
+      src="https://cdn.syncfusion.com/ej2/29.2.4/dist/ej2.min.js"
+      type="text/javascript"
+    ></script>
+
+    <script
+      src="https://cdn.syncfusion.com/ej2/syncfusion-helper.js"
+      type="text/javascript"
+    ></script>
   </head>
   <body>
     <div class="hero">
@@ -100,13 +149,18 @@
       </div>
       <div class="right">
         <div class="pdf"></div>
-        <iframe
-          src=""
-          id="iframe-pdf"
-          width="600px"
-          height="700px"
-          allowtransparency="true"
-        ></iframe>
+        <div id="container">
+          <div id="PdfViewer" style="height: 580px; width: 600px"></div>
+        </div>
+        <script>
+          //Initialize PDF Viewer component
+        </script>
+        <script>
+          var ele = document.getElementById('container');
+          if (ele) {
+            ele.style.visibility = 'visible';
+          }
+        </script>
         <input
           type="file"
           name="import"
