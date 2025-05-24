@@ -140,7 +140,7 @@ function toggleEditMode(e) {
 
       //? Create an input & dropdown menu
       const input = createElement('input', {
-        type: 'number',
+        type: 'text',
         placeholder: 'Number',
         value: squareData[i]['number'],
       });
