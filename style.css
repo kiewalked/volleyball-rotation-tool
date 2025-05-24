@@ -117,15 +117,24 @@ button {
   background-color: rgb(0, 180, 155);
 }
 
+.legend {
+  display: flex;
+  gap: 1rem;
+}
+
 .key-item {
   display: flex;
   gap: 1rem;
   align-items: center;
+  justify-content: center;
 }
 
 .key-item > div {
   min-height: 50px;
   min-width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .court-square > span {

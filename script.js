@@ -1,7 +1,5 @@
 // Map of where each position will move to on the court.
 let initialised = false;
-
-// TODO: Need to implement one side rotating at a time. Right now, both sides rotate. This also means I need to be able to allocate a serving side in edit mode.
 let topServing = true;
 let nextServer = 9;
 
@@ -92,8 +90,6 @@ function rotate() {
     initialised = true;
   }
 
-  // TODO: Fix the rotation system to make it so only one side serves at a time.
-
   const courts = document.querySelectorAll('.court-side');
 
   let servingSide;
@@ -116,7 +112,7 @@ function rotate() {
 
   //* Now loop through the receiving side and find the next server
   findNextServer(receivingSide);
-  renderView();
+  // renderView();
 
   topServing = !topServing;
   // update next server

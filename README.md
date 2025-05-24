@@ -6,6 +6,6 @@ This is a simple tool created for Sydney United Volleyball to help track volleyb
 
 ## Upcoming Features
 
-- Add the ability to import notes & images to be viewed alongside the current rotation.
+- ~~Add the ability to import notes & images to be viewed alongside the current rotation.~~
 - Add a way to save state, such that the user can reload the page at a later time and have their notes stored.
 - Add a simple way to create multiple profiles for upcoming games.
