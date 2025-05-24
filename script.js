@@ -270,11 +270,14 @@ function loadPDF(e) {
   const preview = document.querySelector('iframe');
   const file = e.target.files[0];
   const reader = new FileReader();
+  const url = URL.createObjectURL(file);
 
   reader.addEventListener(
     'load',
     function () {
-      preview.src = reader.result;
+      preview.src =
+        'http://docs.google.com/viewer?url=' + url + '&embedded=true';
+      // console.log(preview.src);
     },
     false
   );
